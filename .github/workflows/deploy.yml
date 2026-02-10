@@ -26,14 +26,16 @@ jobs:
       - name: Build frontend
         working-directory: fundigo-frontend
         run: npm run build
-
+     
       - name: Deploy to Vercel
-        run: |
-          npm install -g vercel
-          vercel pull --yes --environment=production \
-            --token=${{ secrets.VERCEL_TOKEN }}
-          vercel deploy --prod \
-            --token=${{ secrets.VERCEL_TOKEN }}
+        run: npm install -g vercel
+             vercel pull --yes --environment=production \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --scope=${{ secrets.VERCEL_ORG_ID }}
+           vercel deploy --prod \
+           --token=${{ secrets.VERCEL_TOKEN }} \
+           --scope=${{ secrets.VERCEL_ORG_ID }} \
+           --project=${{ secrets.VERCEL_PROJECT_ID }}
 
   backend:
     name: Deploy Backend to Render
