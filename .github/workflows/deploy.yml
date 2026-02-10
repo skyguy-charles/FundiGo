@@ -16,8 +16,14 @@ jobs:
         with:
           node-version: 20
       
+      - name: List directory contents
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Contents:"
+          ls -la
+      
       - name: Deploy to Vercel
-        working-directory: fundigo-frontend
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
