@@ -16,13 +16,6 @@ jobs:
         with:
           node-version: 20
       
-      - name: List directory contents
-        run: |
-          echo "Current directory:"
-          pwd
-          echo "Contents:"
-          ls -la
-      
       - name: Deploy to Vercel
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -30,8 +23,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           npm install -g vercel
-          cd fundigo-frontend
-          vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
+          vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }} --yes --cwd fundigo-frontend
           
   backend:
     name: Deploy Backend to Render
