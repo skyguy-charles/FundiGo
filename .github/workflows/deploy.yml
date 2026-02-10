@@ -7,7 +7,7 @@ on:
 
 jobs:
   frontend:
-    name: Deploy Frontend to Vercel
+    name: Deploy frontend to Vercel
     runs-on: ubuntu-latest
 
     steps:
